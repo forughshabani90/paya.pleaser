@@ -1,16 +1,17 @@
 package com.paya.pleaser.controller;
 
-import com.paya.pleaser.model.Tbl_pleaser_service;
+import com.paya.pleaser.entity.Tbl_pleaser_service;
 import com.paya.pleaser.repository.Tbl_pleaser_service_repository;
 import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class Tbl_pleaser_service_controller {
+public class PleaserServiceController {
     @Autowired
     Tbl_pleaser_service_repository tbl_pleaser_service_repository;
 
@@ -45,5 +46,10 @@ public class Tbl_pleaser_service_controller {
     public Tbl_pleaser_service save(@RequestBody Tbl_pleaser_service tbl_pleaser_service) {
         return tbl_pleaser_service_repository.save(tbl_pleaser_service);
 
+    }
+
+    @GetMapping
+    public List<Tbl_pleaser_service> getPleaserService(x, y, z){
+        servcve
     }
 }

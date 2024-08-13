@@ -1,11 +1,10 @@
-package com.paya.pleaser.model;
+package com.paya.pleaser.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import org.hibernate.type.descriptor.DateTimeUtils;
 import org.hibernate.type.descriptor.jdbc.DecimalJdbcType;
 import org.hibernate.type.descriptor.jdbc.SmallIntJdbcType;
 import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
@@ -16,6 +15,8 @@ import java.util.Date;
 @Entity
 @Data
 public class Tbl_pleaser_service_priority {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private char pleaser_service_priority_id;
     private TinyIntJdbcType pleaser_service_priority_number;
     private char Pleaser_service_priority_pleaser_service_id;
@@ -31,8 +32,6 @@ public class Tbl_pleaser_service_priority {
     private SmallIntJdbcType pleaser_service_priority_count_of_month_installments;
     private boolean pleaser_service_priority_cancel_option;
     private Date pleaser_service_priority_maximum_cancellation_date;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+
 
 }
