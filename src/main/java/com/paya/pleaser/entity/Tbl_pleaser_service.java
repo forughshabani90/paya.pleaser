@@ -13,12 +13,17 @@ import java.util.Date;
 public class Tbl_pleaser_service {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pleaser_service_id",columnDefinition = "(32)")
-    private S pleaser_service_id;
-    private VarcharJdbcType pleaser_service_service_number;
+    @Column(name = "pleaser_service_id", columnDefinition = "char(32)")
+    private String pleaser_service_id;
+
+    private String pleaser_service_service_number;
     private Date pleaser_service_created_at;
-    private TinyIntJdbcType pleaser_service_type;
-    private NVarcharJdbcType pleaser_service_title;
+    private int pleaser_service_type;
+    private String pleaser_service_title;
     private int pleaser_service_count;
-    private char pleaser_service_personnel_id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "pleaser_service_personnel_id", columnDefinition = "char(32)")
+    private String pleaser_service_personnel_id;
 }

@@ -1,9 +1,6 @@
 package com.paya.pleaser.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
 import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
@@ -13,10 +10,18 @@ import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
 public class Tbl_pleaser_service_request_confirmation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private char pleaser_service_request_confirmation_id;
-    private char pleaser_service_request_confirmation_pleaser_service_request_id;
-    private char pleaser_service_request_confirmation_reviewer_personnel_id;
-    private NVarcharJdbcType pleaser_service_request_confirmation_description;
-    private TinyIntJdbcType pleaser_service_request_confirmation_status;
+    @Column(name = "pleaser_service_request_confirmation_id" , columnDefinition = "char(32)")
+    private String pleaser_service_request_confirmation_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "pleaser_service_request_confirmation_pleaser_service_request_id" , columnDefinition = "char(32)")
+    private String pleaser_service_request_confirmation_pleaser_service_request_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "pleaser_service_request_confirmation_reviewer_personnel_id" , columnDefinition = "char(32)")
+    private String pleaser_service_request_confirmation_reviewer_personnel_id;
+
+    private String pleaser_service_request_confirmation_description;
+    private int pleaser_service_request_confirmation_status;
 
 }

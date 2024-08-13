@@ -14,7 +14,7 @@ public class Tbl_payment_regime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "payment_regim_pleaser_service_priority_id",columnDefinition = "char(32")
+    @Column(name = "payment_regim_pleaser_service_priority_id",columnDefinition = "char(32)")
     private String payment_regim_pleaser_service_priority_id;
     private String payment_regime_content;
 
