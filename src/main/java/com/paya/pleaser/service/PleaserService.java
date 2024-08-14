@@ -16,20 +16,23 @@ public class PleaserService {
     Tbl_pleaser_service_repository tbl_pleaser_service_repository;
 
     public List<Tbl_pleaser_service> get(String id, String title, Date date) {
-        List<Tbl_pleaser_service> tblPleaserServices = tbl_pleaser_service_repository.findAll();
-        Optional<Tbl_pleaser_service> result1 = tbl_pleaser_service_repository.findById(id);
+        List<Tbl_pleaser_service> result1 = tbl_pleaser_service_repository.findById(id);
+        if (result1.isPresent()) {
+            result1 = (List<Tbl_pleaser_service>) result1.get();
+        }
+        result1 = tbl_pleaser_service_repository.findByTitle(title);
         if (result1.isPresent()) {
             return (List<Tbl_pleaser_service>) result1.get();
         }
-        Optional<Tbl_pleaser_service> result2 = tbl_pleaser_service_repository.findByTitle(title);
-        if (result2.isPresent()) {
-            return (List<Tbl_pleaser_service>) result2.get();
+        result1 = tbl_pleaser_service_repository.findByDate(date);
+        if (result1.isPresent()) {
+            return (List<Tbl_pleaser_service>) result1.get();
         }
-        Optional<Tbl_pleaser_service> result3 = tbl_pleaser_service_repository.findByDate(date);
-        if (result3.isPresent()) {
-            return (List<Tbl_pleaser_service>) result3.get();
-        }
-        return (List<Tbl_pleaser_service>) tblPleaserServices.get(0);
+        return result1;
 
+    }
+
+    public Tbl_pleaser_service save(Tbl_pleaser_service tblPleaserService){
+        return tbl_pleaser_service_repository.save(tblPleaserService);
     }
 }
