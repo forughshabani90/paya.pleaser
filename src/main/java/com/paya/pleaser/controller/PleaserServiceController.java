@@ -1,55 +1,31 @@
 package com.paya.pleaser.controller;
 
-import com.paya.pleaser.entity.Tbl_pleaser_service;
-import com.paya.pleaser.repository.Tbl_pleaser_service_repository;
-import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
+import com.paya.pleaser.entity.TblPleaserService;
+import com.paya.pleaser.repository.PleaserServiceRepository;
+import com.paya.pleaser.service.PleaserServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
 public class PleaserServiceController {
     @Autowired
-    Tbl_pleaser_service_repository tbl_pleaser_service_repository;
+    PleaserServiceService pleaserServiceService;
 
-    @GetMapping
-    public Tbl_pleaser_service getById(@PathVariable("id") Long id) {
-        Optional<Tbl_pleaser_service> tbl_service1 = tbl_pleaser_service_repository.findById(id);
-        if (tbl_service1.isPresent()) {
-            return tbl_service1.get();
-        }
-        return null;
+    @GetMapping("/pleaser-service")
+    public List<TblPleaserService> getPleaserService(@RequestBody String p_id, @RequestBody String title) {
+        return pleaserServiceService.getPleaserServiceSrv(p_id, title);
     }
 
-    @GetMapping
-    public Tbl_pleaser_service getByName(@PathVariable("title") NVarcharJdbcType pleaser_service_title) {
-        Optional<Tbl_pleaser_service> tbl_service1 = tbl_pleaser_service_repository.findByTitle(pleaser_service_title);
-        if (tbl_service1.isPresent()) {
-            return tbl_service1.get();
-        }
-        return null;
-    }
-
-    @GetMapping
-    public Tbl_pleaser_service getByTime(@PathVariable("date") Tbl_pleaser_service pleaser_service_created_at) {
-        Optional<Tbl_pleaser_service> tbl_service1 = tbl_pleaser_service_repository.findByDate(pleaser_service_created_at);
-        if (tbl_service1.isPresent()) {
-            return tbl_service1.get();
-        }
-        return null;
-    }
-
-    @PostMapping
-    public Tbl_pleaser_service save(@RequestBody Tbl_pleaser_service tbl_pleaser_service) {
-        return tbl_pleaser_service_repository.save(tbl_pleaser_service);
-
-    }
-
-    @GetMapping
-    public List<Tbl_pleaser_service> getPleaserService(x, y, z){
-        servcve
-    }
+//    @PostMapping
+//    public TblPleaserService savePleaserService(@RequestBody TblPleaserService tbl_pleaser_service) {
+//        return pleaserService.save(tbl_pleaser_service);
+//    }
+//
+//    @GetMapping
+//    public List<Tbl_pleaser_service> getPleaserService(x, y, z) {
+//        servcve
+//    }
 }
